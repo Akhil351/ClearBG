@@ -4,16 +4,18 @@ import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import { Route, Routes } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
+import UserSyncHandler from "./components/UserSyncHandler";
 
 function App() {
   return (
     <div>
-      <MenuBar/>
-      <Toaster/>
+      <UserSyncHandler />
+      <MenuBar />
+      <Toaster />
       <Routes>
         <Route path="/" element={<Home />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

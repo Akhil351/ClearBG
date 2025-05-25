@@ -2,11 +2,20 @@ server:
   port: 3510
   servlet:
     context-path: /api/v1.0
+clerk:
+  issuer: clerk-issue
+  jwks-url: jwks-url
+  webhook:
+    secret: webhook-secret
 
+clipdrop:
+  api-key: clipdrop-key
 
 spring:
   application:
     name: CLEAR-BG-SERVICE
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration
 
   datasource:
     url: jdbc:postgresql://localhost:5432/clearbg
@@ -23,6 +32,21 @@ spring:
 
 
 
+#🔄 How It Works in JWT Flow:
+#  Client gets a JWT from Clerk after login.
+#
+#Client sends JWT in Authorization header: Bearer <token>.
+#
+#Your Spring Boot app:
+#
+#  Reads the issuer to verify the token is from Clerk.
+#
+#  Uses the jwks-url to verify the token’s digital signature.
+
+
+
+#  🔁 Ngrok creates a secure public URL (like https://abc.ngrok.io) that tunnels to your local server (http://localhost:8080).
+#  🚀 Use it to test webhooks, APIs, or share your app without deploying it online.
 
 
 

@@ -5,6 +5,7 @@ import org.akhil.bg.model.UserEntity;
 import org.akhil.bg.payload.UserDto;
 import org.akhil.bg.repo.UserRepo;
 import org.akhil.bg.service.UserService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -31,6 +32,18 @@ public class UserServiceImpl implements UserService {
         UserEntity newUser=mapToEntity(userDto);
         userRepo.save(newUser);
         return mapToDto(newUser);
+    }
+
+    @Override
+    public UserDto getUserByClerkId(String clerkId) {
+        UserEntity userEntity=userRepo.findByClerkId(clerkId).orElseThrow(()->new UsernameNotFoundException("User not found"));
+        return mapToDto(userEntity);
+    }
+
+    @Override
+    public void deleteUserByClerkId(String clerkId) {
+        UserEntity userEntity = userRepo.findByClerkId(clerkId).orElseThrow(()->new UsernameNotFoundException("User not found"));
+        userRepo.delete(userEntity);
     }
 
     private UserDto mapToDto(UserEntity newUser) {

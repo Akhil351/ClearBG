@@ -7,8 +7,8 @@ import toast from "react-hot-toast";
 function UserSyncHandler() {
   const { isLoaded, isSignedIn, getToken } = useAuth();
   const { user } = useUser();
-  const [synced, setSynced] = useState(false); 
-  const { backEndURL } = useContext(AppContext);
+  const [synced, setSynced] = useState(false);
+  const { backEndURL, loadUserCredits } = useContext(AppContext);
 
   useEffect(() => {
     const saveUser = async () => {
@@ -21,13 +21,14 @@ function UserSyncHandler() {
           email: user.primaryEmailAddress.emailAddress,
           firstName: user.firstName,
           lastName: user.lastName,
+          photoUrl: user.imageUrl,
         };
 
         await axios.post(`${backEndURL}/users`, userData, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setSynced(true);
-        // TODO: update the user credits if needed
+        await loadUserCredits();
       } catch (error) {
         console.error("User sync failed", error);
         toast.error("Unable to create account. Please try again.");

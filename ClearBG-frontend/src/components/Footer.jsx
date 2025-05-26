@@ -1,5 +1,6 @@
 import React from "react";
 import { assets, FOOTER_CONSTANTS } from "../assets/assets";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Footer() {
   return (
@@ -16,7 +17,7 @@ function Footer() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={item.logo} alt="social-icon" width={32} />
+            <FontAwesomeIcon icon={item.icon} size="2x" />
           </a>
         ))}
       </div>

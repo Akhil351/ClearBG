@@ -1,5 +1,11 @@
 import logo from "./logo.png";
 import video_banner from "./home-page-banner.mp4";
+import {
+  faFacebook,
+  faInstagram,
+  faLinkedin,
+  faTwitter,
+} from "@fortawesome/free-brands-svg-icons";
 // People
 import people from "./people.png";
 import people_org from "./people-org.png";
@@ -86,21 +92,10 @@ export const testimonials = [
     handle: "hitesh@2008",
   },
 ];
+
 export const FOOTER_CONSTANTS = [
-  {
-    url: "https://facebook.com",
-    logo: "https://img.icons8.com/fluent/30/000000/facebook-new.png",
-  },
-  {
-    url: "https://linkedin.com",
-    logo: "https://img.icons8.com/fluent/30/000000/linkedin-2.png",
-  },
-  {
-    url: "https://instagram.com",
-    logo: "https://img.icons8.com/fluent/30/000000/instagram-new.png",
-  },
-  {
-    url: "https://twitter.com",
-    logo: "https://img.icons8.com/fluent/30/000000/twitter.png",
-  },
+  { url: "https://facebook.com", icon: faFacebook },
+  { url: "https://instagram.com", icon: faInstagram },
+  { url: "https://linkedin.com", icon: faLinkedin },
+  { url: "https://twitter.com", icon: faTwitter },
 ];

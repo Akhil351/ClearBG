@@ -38,7 +38,11 @@ const AppContextProvider = ({ children }) => {
       if (!isSignedIn) {
         return openSignIn();
       }
-
+      if (credit <= 0) {
+        navigate("/pricing");
+        toast.error("You have no credits")
+        return;
+      }
       setImage(selectedImage);
       setResultImage(false);
       navigate("/result");

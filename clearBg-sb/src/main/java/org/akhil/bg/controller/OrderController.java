@@ -13,6 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -59,7 +60,7 @@ public class OrderController {
     @PostMapping("/verify")
     public  ResponseEntity<?> verifyOrder(@RequestBody Map<String,Object> request) throws RazorpayException {
         try{
-            String razorpayId= request.get("razorpayId").toString();
+            String razorpayId= request.get("razorpay_order_id").toString();
             Map<String,Object> response=razorpayService.verifyPayment(razorpayId);
             return ResponseEntity.ok(response
             );
@@ -78,11 +79,12 @@ public class OrderController {
         return OrderDto.builder()
                 .id(order.get("id"))
                 .entity(order.get("entity"))
-                .amount(new BigDecimal(String.valueOf(order.get("amount"))))
-                .currency(order.get("currency"))
-                .created_at(order.get("created_at"))
-                .status(order.get("status"))
-                .receipt(order.get("receipt"))
+                .amount(new BigDecimal(order.get("amount").toString()))
+                .currency(order.get("currency").toString())
+                .created_at(order.get("created_at")) // convert UNIX timestamp to Date
+                .status(order.get("status").toString())
+                .receipt(order.get("receipt").toString())
                 .build();
     }
+
 }

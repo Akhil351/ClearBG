@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { assets } from "../assets/assets";
 import { Menu, X } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   SignedIn,
   SignedOut,
@@ -12,6 +12,7 @@ import {
 import { AppContext } from "../context/contex";
 
 function MenuBar() {
+  const navigate=useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const { openSignIn, openSignUp } = useClerk();
   const { user } = useUser();
@@ -53,7 +54,7 @@ function MenuBar() {
         </SignedOut>
         <SignedIn>
           <div className="flex items-center gap-2 sm:gap-3">
-            <button className="flex items-center gap-2 bg-blue-100 px-4 sm:px-5 py-1.5 sm:py-2.5 rounded-full hover:scale-105 transition-all duration-500 cursor-pointer">
+            <button onClick={()=>navigate("/pricing")} className="flex items-center gap-2 bg-blue-100 px-4 sm:px-5 py-1.5 sm:py-2.5 rounded-full hover:scale-105 transition-all duration-500 cursor-pointer">
               <img src={assets.credits} alt="credits" height={24} width={24} />
               <p className="text-xs sm:text-sm font-medium text-gray-600">
                 Credits: {credit}
@@ -89,7 +90,7 @@ function MenuBar() {
           </SignedOut>
           <SignedIn>
             <div className="flex items-center gap-2 sm:gap-3">
-              <button className="flex items-center gap-2 bg-blue-100 px-4 py-1.5 sm:py-2.5 rounded-full hover:scale-105 transition-all durnation-500 cursor-pointer">
+              <button onClick={()=>navigate("/pricing")} className="flex items-center gap-2 bg-blue-100 px-4 py-1.5 sm:py-2.5 rounded-full hover:scale-105 transition-all durnation-500 cursor-pointer">
                 <img
                   src={assets.credits}
                   alt="credits"

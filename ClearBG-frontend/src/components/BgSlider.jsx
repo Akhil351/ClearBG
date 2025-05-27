@@ -60,7 +60,7 @@ function BgSlider() {
         >
           <div className="absolute top-1/2 -translate-y-1/2 -left-4 w-8 h-8 bg-white border border-gray-300 rounded-full flex items-center justify-center shadow">
             <img
-              src="/src/assets/slide_icon.svg" // Import this using: import slideIcon from '../assets/slide_icon.svg';
+              src="/src/assets/slide_icon.svg"
               alt="slider"
               className="w-6 h-6"
             />

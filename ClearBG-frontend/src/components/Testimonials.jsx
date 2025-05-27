@@ -16,8 +16,8 @@ function Testimonials() {
           >
             <div className="flex flex-col px-6 pt-8 mb-10 space-y-5">
               <svg
-                width={24}
-                height={18}
+                width="24px"
+                height="18px"
                 viewBox="0 0 24 18"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"

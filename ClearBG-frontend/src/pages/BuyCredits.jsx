@@ -4,7 +4,7 @@ import { useAuth, useClerk } from "@clerk/clerk-react";
 import { placeOrder } from "../service/OrderService";
 import { AppContext } from "../context/contex";
 
-function Pricing() {
+function BuyCredits() {
   const { isSignedIn, getToken } = useAuth();
   const { backEndURL, loadUserCredits } = useContext(AppContext);
   const { openSignIn } = useClerk();
@@ -85,4 +85,4 @@ function Pricing() {
   );
 }
 
-export default Pricing;
+export default BuyCredits;
